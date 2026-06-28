@@ -1,0 +1,56 @@
+
+
+.logo{
+    width: 60px;
+    top: 100px;
+    left: 100px;
+}
+
+.top {}
+.logo {}
+
+.ce {
+    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+}
+
+.book{
+    width: 40px;
+    position: absolute;
+    top:195px;
+    left: 90px;
+}
+
+.mod_jm{
+    position: absolute;
+    top: 200px;
+    left: 140px;
+    border-left: 3px solid #3498db;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+
+}
+
+.hr1{
+    margin-top: 40px;
+}
+.hr2{
+    margin-top: 60px;
+}
+.mod_ks{
+    position: absolute;
+    top: 260px;
+    left: 140px;
+    border-left: 3px solid #3498db;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+}
+.book2{
+    width: 40px;
+    position: absolute;
+    top:250px;
+    left: 90px;
+}
+.hr3{
+    margin-top: 55px;
+}
