@@ -32,6 +32,28 @@
 
 }
 
+
+
+.mod_jmcd{
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    border-left: 3px solid navy;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+
+}
+
+.mod_kscd{
+    position: absolute;
+    top: 260px;
+    left: 500px;
+    border-left: 3px solid navy;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+
+}
+
+
+
 .hr1{
     margin-top: 40px;
 }
