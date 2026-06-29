@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<link rel="stylesheet" href="../style/notice.css">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公告</title>
+
+</head>
+<body>
+<a href="../index.html">
+    <img src="../svg/returnbtn.svg" alt="返回">
+</a>
+
+<div class="scroll">
+
+  <!-- ===== 标题 ===== -->
+  <div class="header">
+    <img class="title-icon" src="../svg/favicon.svg" alt="ceds">
+    <h1 class="title">公    告</h1>
+    <p class="subtitle">ceds</p>
+  </div>
+
+  <!-- ===== 公告列表 ===== -->
+ <div class="notice-list" id="noticeList">
+    <!-- 数据由 JavaScript 渲染 -->
+  </div>
+
+  <!-- ===== 底部 ===== -->
+  <div class="footer">
+    <span> 2026-6-29 </span>
+  </div>
+
+</div>
+
+<script>
+  // ============================================
+  // 📜 古风公告数据
+  // ============================================
+
+  const notices = [{
+    date: '2026/6/29',
+    title: '【 修 复 问 题 】',
+    content: '历经三载修缮，网站即日重开。天下码农，皆可登山论道。望诸君以报错会友，以心相交，共守此方清净。',
+    badge: '重要',
+    badgeType: 'important'
+  }, {
+    date: '2026/6/28',
+    title: '【 更 新 代 码 】',
+    content: '今日代更新html代码版本到1.1.2',
+    badge: '新',
+    badgeType: 'new'
+  }, {
+    date: '2026/6/26',
+    title: '【 更 换 托 管 】',
+    content: '因原服务器意外，本站紧急迁移至github pages',
+    badge: null,
+    badgeType: null
+  }, {
+    date: '2026/6/23',
+    title: '【 本 站 崩 溃 】',
+    content: '因为代码编写不当导致服务器崩溃,紧急修复中',
+    badge: null,
+    badgeType: null
+  }, {
+    date: '2026/6/22',
+    title: '【 建 站 】',
+    content: '本站建站',
+    badge: null,
+    badgeType: null
+  }];
+
+  // ============================================
+  // 🖌️ 渲染函数
+  // ============================================
+
+  function renderNotices() {
+    const container = document.getElementById('noticeList');
+
+    // 生成 HTML
+    const html = notices.map(item => {
+      // 处理标签
+      let badgeHtml = '';
+      if (item.badge) {
+        const typeClass = item.badgeType === 'important' ? 'badge-important' :
+                item.badgeType === 'new' ? 'badge-new' : '';
+        badgeHtml = `<span class="badge ${typeClass}">${item.badge}</span>`;
+      }
+
+      return `
+                    <div class="notice-item">
+                        <div class="date">${item.date}</div>
+                        <div class="title-text">
+                            ${item.title}
+                            ${badgeHtml}
+                        </div>
+                        <div class="content-text">${item.content}</div>
+                    </div>
+                `;
+    }).join('');
+
+    container.innerHTML = html;
+  }
+
+  // ============================================
+  // 🚀 启动
+  // ============================================
+
+  renderNotices();
+
+</script>
+
+</body>
+</html>

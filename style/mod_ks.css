@@ -1,0 +1,81 @@
+.ks_returnbt{
+    width: 100px;
+    position: absolute;
+    top: 80px;
+    left: 1555px;
+}
+
+
+.hr1{margin-top: 40px;}
+.hr2{margin-top: 60px;}
+.hr3{margin-top: 55px;}
+.hr5{margin-top: 60px}
+.logo{width: 60px;}
+.hr4{}
+
+.book{
+    width: 40px;
+    position: absolute;
+    top:130px;
+    left: 90px;
+}
+.mod_jm{
+    position: absolute;
+    top: 150px;
+    left: 140px;
+    border-left: 3px solid #3498db;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+}
+
+
+.mod_jmcd{
+    position: absolute;
+    top: 150px;
+    left: 500px;
+    border-left: 3px solid navy;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+
+}
+.mod_kscd{
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    border-left: 3px solid navy;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+
+}
+
+
+.mod_ks{
+    position: absolute;
+    top: 200px;
+    left: 140px;
+    border-left: 3px solid #3498db;  /* 左边框 = 竖线 */
+    padding-left: 15px;              /* 线和文字的距离 */
+}
+.book2{
+    width: 40px;
+    position: absolute;
+    top:190px;
+    left: 90px;
+}
+.sign{
+    width: 40px;
+    position: absolute;
+    top: 310px;
+    left: 94px;
+}
+.h_notice{
+    position: absolute;
+    top: 310px;
+    left: 500px;
+    border-left: 3px solid orange;  /* 左边框 = 竖线 */
+    padding-left: 15px;
+}
+.notice{
+    position: absolute;
+    top: 380px;
+    left: 140px;
+    border-left: 3px solid #3498db;  /* 左边框 = 竖线 */
+    padding-left: 15px;
+}
