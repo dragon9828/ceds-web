@@ -92,16 +92,16 @@
     const container = document.getElementById('noticeList');
 
     // 生成 HTML
-    const html = notices.map(item => {
-      // 处理标签
-      let badgeHtml = '';
-      if (item.badge) {
-        const typeClass = item.badgeType === 'important' ? 'badge-important' :
+      container.innerHTML = notices.map(item => {
+        // 处理标签
+        let badgeHtml = '';
+        if (item.badge) {
+            const typeClass = item.badgeType === 'important' ? 'badge-important' :
                 item.badgeType === 'new' ? 'badge-new' : '';
-        badgeHtml = `<span class="badge ${typeClass}">${item.badge}</span>`;
-      }
+            badgeHtml = `<span class="badge ${typeClass}">${item.badge}</span>`;
+        }
 
-      return `
+        return `
                     <div class="notice-item">
                         <div class="date">${item.date}</div>
                         <div class="title-text">
@@ -112,8 +112,6 @@
                     </div>
                 `;
     }).join('');
-
-    container.innerHTML = html;
   }
 
   // ============================================
