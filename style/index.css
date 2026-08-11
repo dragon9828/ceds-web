@@ -1,0 +1,359 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0d1117;   /* GitHub 暗色背景 */
+    color: #e6edf3;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', 'Consolas', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    line-height: 1.5;
+}
+
+/* 核心卡片 —— 方正、克制、git 风格 */
+.studio-container {
+    max-width: 1200px;
+    width: 100%;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;        /* 保留轻微圆角，但整体方正 */
+    padding: 2.5rem 2.2rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    transition: all 0.15s ease;
+}
+
+/* 头部 ———— 类似 git log --oneline 的装饰 */
+.studio-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid #30363d;
+    padding-bottom: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.studio-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem 0.8rem;
+    flex-wrap: wrap;
+}
+
+.studio-title h1 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #f0f6fc 0%, #8b949e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border-right: 1px solid #30363d;
+    padding-right: 1rem;
+}
+
+.studio-title .git-badge {
+    font-size: 0.85rem;
+    background: #21262d;
+    padding: 0.25rem 0.9rem;
+    border-radius: 20px;
+    color: #8b949e;
+    border: 1px solid #30363d;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+}
+
+.studio-header .branch-sim {
+    font-size: 0.9rem;
+    color: #8b949e;
+    background: #0d1117;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    border: 1px solid #30363d;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.branch-sim::before {
+    content: "⎇  main";
+    color: #58a6ff;
+    font-weight: 500;
+}
+
+/* 简介区 ———— 类似 git status 的简洁 */
+.studio-description {
+    background: #0d1117;
+    border-left: 4px solid #58a6ff;
+    padding: 0.9rem 1.5rem;
+    margin-bottom: 2.8rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 1rem;
+    color: #c9d1d9;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.studio-description code {
+    background: #1c2128;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    color: #f0883e;
+    font-size: 0.9rem;
+    border: 1px solid #30363d;
+}
+
+.studio-description .hint {
+    color: #8b949e;
+    font-size: 0.85rem;
+}
+
+/* 项目网格 ———— 方正、平等、三个项目卡片 */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+/* 每个项目卡片 ———— 极简、方框、git 提交记录风格 */
+.project-card {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;        /* 保持轻微方中带圆，整体硬朗 */
+    padding: 1.8rem 1.2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.project-card:hover {
+    border-color: #58a6ff;
+    box-shadow: 0 4px 16px rgba(88, 166, 255, 0.08);
+}
+
+.project-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #f0f6fc;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px dashed #30363d;
+    padding-bottom: 0.7rem;
+    margin-bottom: 0.8rem;
+}
+
+.project-name .hash {
+    font-size: 0.7rem;
+    background: #21262d;
+    padding: 0.15rem 0.6rem;
+    border-radius: 30px;
+    color: #8b949e;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.project-desc {
+    color: #b1bac4;
+    font-size: 0.9rem;
+    flex: 1;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-desc .tag {
+    display: inline-block;
+    background: #1c2333;
+    padding: 0.1rem 0.6rem;
+    border-radius: 12px;
+    color: #7d8590;
+    font-size: 0.7rem;
+    border: 1px solid #2d333b;
+    margin-right: 0.3rem;
+}
+
+/* 下载区域 ———— 仿 git clone / release 下载 */
+.download-section {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.8rem;
+    border-top: 1px solid #21262d;
+    padding-top: 1rem;
+}
+
+.download-btn {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    flex: 1 0 auto;
+    justify-content: center;
+}
+
+.download-btn:hover {
+    background: #30363d;
+    border-color: #58a6ff;
+    color: #f0f6fc;
+}
+
+.download-btn .icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.download-btn.primary {
+    background: #238636;
+    border-color: #2ea043;
+    color: #fff;
+}
+
+.download-btn.primary:hover {
+    background: #2ea043;
+    border-color: #3fb950;
+}
+
+.download-btn.outline {
+    background: transparent;
+    border-color: #30363d;
+}
+
+.download-btn.outline:hover {
+    background: #1c2128;
+    border-color: #8b949e;
+}
+
+/* 仿 git 操作日志 footer */
+.studio-footer {
+    margin-top: 2.8rem;
+    border-top: 1px solid #21262d;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #8b949e;
+}
+
+.footer-commit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-commit .commit-hash {
+    background: #0d1117;
+    padding: 0.1rem 0.6rem;
+    border-radius: 16px;
+    border: 1px solid #30363d;
+    color: #58a6ff;
+    font-weight: 500;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.footer-links a {
+    color: #8b949e;
+    text-decoration: none;
+    border-bottom: 1px dotted #30363d;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #58a6ff;
+    border-bottom-color: #58a6ff;
+}
+
+/* 移动端调整 ———— 依然方正，不花哨 */
+@media (max-width: 880px) {
+    .studio-container {
+        padding: 1.8rem 1.2rem;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .studio-container {
+        padding: 1.5rem 0.8rem;
+        border-radius: 8px;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .studio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+    .studio-title h1 {
+        font-size: 1.6rem;
+        border-right: none;
+        padding-right: 0;
+    }
+    .studio-description {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .download-btn {
+        flex: 1 1 100%;
+    }
+}
+
+/* 模拟终端光标闪烁 (仅装饰) */
+.cursor-blink {
+    display: inline-block;
+    width: 8px;
+    height: 1.1rem;
+    background: #58a6ff;
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    animation: blink 1.2s step-end infinite;
+    opacity: 0.7;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+}
+
+
+.git-tag {
+    background: #1c2333;
+    border-radius: 4px;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.7rem;
+    border: 1px solid #2d333b;
+    color: #8b949e;
+}
