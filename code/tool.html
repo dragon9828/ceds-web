@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="icon" href="../svg/favicon.svg" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支持库</title>
+    <style>
+        /* ========== 全局重置 & 方角 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+        }
+
+        :root {
+            --primary: #1e90ff;
+            --primary-deep: #0a6eb4;
+            --primary-dark: #085a94;
+            --text-dark: #0f2b40;
+            --text-mid: #4a6273;
+            --text-light: #8aa0b0;
+            --bg-soft: #f2f8fd;
+            --line: #dce9f5;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ========== 顶部导航（与主页一致，下滑带动） ========== */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background-color: var(--primary-dark);
+            z-index: 1000;
+            transition: transform 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        }
+
+
+        .nav-container {
+            max-width: 1280px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+
+        .nav-links { display: flex; gap: 4px; }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 15px;
+            padding: 8px 18px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+        /* ========== 主内容区 ========== */
+        .main-content { padding-top: 64px; }
+        /* ========== 通用容器 ========== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* ========== 分类卡片 ========== */
+        .categories {
+            padding: 60px 0 20px;
+        }
+        .section-title {
+            font-size: 24px;
+            color: var(--primary-deep);
+            border-left: 5px solid var(--primary);
+            padding-left: 14px;
+            margin-bottom: 28px;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .category-card {
+            background-color: var(--bg-soft);
+            border: 2px solid transparent;
+            padding: 30px 22px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.25s, transform 0.25s, background-color 0.25s;
+        }
+        .category-card:hover {
+            border-color: var(--primary);
+            background-color: #ffffff;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(30, 144, 255, 0.12);
+        }
+        .category-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+        }
+        .category-card h4 {
+            font-size: 17px;
+            color: var(--primary-deep);
+            margin-bottom: 8px;
+        }
+        .category-card p {
+            font-size: 13px;
+            color: var(--text-mid);
+        }
+
+
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 1024px) {
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 860px) {
+
+            .support-hero h1 { font-size: 34px; }
+        }
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .category-grid { grid-template-columns: 1fr; }
+
+            .support-hero h1 { font-size: 28px; letter-spacing: 2px; }
+
+            .hero-search button { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="top-nav" id="topNav">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="../svg/favicon.svg" alt="">支持库
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html" class="nav-link">首页</a>
+            <a href="../code/book.html" class="nav-link">更多作品</a>
+            <a href="../code/tool.html" class="nav-link">工具</a>
+            <a href="lib.html" class="nav-link active">支持</a>
+        </nav>
+    </div>
+</header>
+
+<main class="main-content">
+
+
+
+    <!-- ===== 帮助分类 ===== -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">分类</h2>
+            <div class="category-grid">
+                <a class="category-card" data-category="account" href="https://www.bilibili.com/">
+                    <div class="category-icon">🎞️</div>
+                    <h4>哔哩哔哩</h4>
+                    <p>哔哩哔哩</p>
+                </a>
+                <a class="category-card" data-category="game" href="https://zh.minecraft.wiki">
+                    <div class="category-icon">📃</div>
+                    <h4>mc wiki</h4>
+                    <p>我的世界中文维基</p>
+                </a>
+                <a class="category-card" data-category="tool" href="https://www.raspberrypi.com/">
+                    <div class="category-icon">📃</div>
+                    <h4>树莓派</h4>
+                    <p>RaspBerry pi官网</p>
+                </a>
+                <a class="category-card" data-category="other" href="https://www.mcmod.cn">
+                    <div class="category-icon">📃</div>
+                    <h4>mc百科</h4>
+                    <p>我的世界模组百科</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

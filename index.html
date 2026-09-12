@@ -1,349 +1,112 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
-    <title>CE神龙工作室官网</title>
-    <link rel="stylesheet" href="style/index.css">
-    <style>
-        /* 补充样式：头像和登录状态 */
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-left: auto;
-            padding: 4px 12px 4px 8px;
-            border: 1px solid #2f3b48;
-            background: #0d1117;
-        }
-
-        .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 0;
-            background: #2b4c66;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #4a5b6b;
-            flex-shrink: 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .user-avatar svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .user-name {
-            color: #e6edf3;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .user-status {
-            color: #7d8590;
-            font-size: 0.7rem;
-        }
-
-        .user-status.logged-in {
-            color: #3fb950;
-        }
-
-        .user-status.logged-in::before {
-            content: "● ";
-            color: #3fb950;
-        }
-
-        .user-status.logged-out::before {
-            content: "○ ";
-            color: #7d8590;
-        }
-
-        .studio-header {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .studio-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-left: auto;
-        }
-
-        @media (max-width: 700px) {
-            .studio-header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .header-right {
-                margin-left: 0;
-                justify-content: flex-start;
-            }
-            .user-profile {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cassia_seedling</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<div class="studio-container">
-    <!-- 头部：git 风格 + 头像 -->
-    <header class="studio-header">
-        <div class="studio-title">
-            <h1>CE神龙工作室</h1>
-            <span class="git-badge">网站代码版本：v3.0.1</span>
-            <span class="git-badge" style="background:#0d1117; border-color:#30363d;">3 projects</span>
+<header class="top-nav" id="topNav">
+    <div class="nav-container">
+        <div class="logo">
+            <img class="logo-icon" src="svg/favicon.svg"> ce神龙工作室
         </div>
-
-        <!-- 用户头像区域 -->
-        <div class="header-right">
-            <div class="user-profile" id="userProfile">
-                <div class="user-avatar" id="userAvatar">
-                    <img id="avatarImg" src="svg/favicon.svg" alt="头像" width="36" height="36">
-                </div>
-                <div>
-                    <div class="user-name" id="userName">访客</div>
-                    <div class="user-status logged-out" id="userStatus">未登录</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="branch-sim">
-            <span style="color:#e6edf3;">origin</span>
-            <span style="color:#58a6ff; margin:0 2px;">⤷</span>
-            <span style="color:#f0883e;">releases</span>
-        </div>
-    </header>
-
-    <!-- 简介 / git status 风格 -->
-    <div class="studio-description">
-      <span>
-          <span style="color:#58a6ff;">$</span> <span id="typing-command"></span>
-      </span>
-        <span class="hint">
-            <code>     </code>
-        <span class="cursor-blink"></span>
-      </span>
+        <nav class="nav-links">
+            <a href="#" class="nav-link active">首页</a>
+            <a href="code/book.html" class="nav-link">更多作品</a>
+            <a href="code/tool.html" class="nav-link">工具</a>
+            <a href="code/lib.html" class="nav-link">支持</a>
+        </nav>
     </div>
+</header>
 
-    <div class="projects-grid">
-        <div class="project-card">
-            <div class="project-name">
-                <span>决明的生物群系</span>
-                <span class="hash">cassia_seedling</span>
+<main class="main-content">
+    <!-- 轮播图区域 -->
+    <section class="carousel-section">
+        <div class="carousel-container" id="carousel">
+            <div class="carousel-slides">
+                <!-- 轮播项1：data-bg 填图片路径；留空则使用渐变色 -->
+                <div class="carousel-slide active"
+                     data-bg="images/banner1.png"
+                     style="background: linear-gradient(135deg, #1e90ff, #6cb4ee);">
+                    <div class="slide-content">
+                        <h2>cassia_seedling</h2>
+                        <p>我们的工作室</p>
+                    </div>
+                </div>
+                <!-- 轮播项2 -->
+                <div class="carousel-slide"
+                     data-bg="images/banner2.png"
+                     style="background: linear-gradient(135deg, #0a6eb4, #2a9df4);">
+                    <div class="slide-content">
+                        <h2>竹溪演义</h2>
+                        <p>2.5d游戏</p>
+                    </div>
+                </div>
+                <!-- 轮播项3 -->
+                <div class="carousel-slide"
+                     data-bg="images/banner3.png"
+                     style="background: linear-gradient(135deg, #1470af, #4db8ff);">
+                    <div class="slide-content">
+                        <h2>Minecraft mod</h2>
+                        <p>与我们一起构建未来</p>
+                    </div>
+                </div>
             </div>
-            <div class="project-desc">
-                <span class="tag">#Minecraft_neoforge</span>
-                <span class="tag">#Mod_1.21.4</span>
-                <span style="display:block; margin-top:6px;">JAVA_MCreator</span>
-                <span style="display:block; color:#7d8590; font-size:0.8rem; margin-top:4px;">(:</span>
+            <!-- 轮播指示器 -->
+            <div class="carousel-indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+                <span class="indicator" data-index="2"></span>
             </div>
-            <div class="download-section">
-                <a href="mod/mod_jm.html" class="download-btn primary"><span class="icon">⬇</span> 下载 .jar</a>
-                <a href="#" class="download-btn outline"><span class="icon">↓</span> clone</a>
+            <!-- 左右箭头 -->
+            <button class="carousel-arrow prev" id="prevSlide">‹</button>
+            <button class="carousel-arrow next" id="nextSlide">›</button>
+        </div>
+    </section>
+
+    <!-- 公告栏 -->
+    <section class="announcement-section">
+        <div class="announcement-container">
+            <div class="announcement-badge">公告</div>
+            <div class="announcement-text" id="announcementText">
+                欢迎来到ce神龙工作室！最新项目《竹溪演义》现已开启测试。
             </div>
         </div>
+    </section>
 
-        <div class="project-card">
-            <div class="project-name">
-                <span>矿石复兴</span>
-                <span class="hash">68td7h</span>
+    <!-- 3个项目展示卡片 -->
+    <section class="projects-section">
+        <h3 class="section-title">项目</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon">□</div>
+                <h4>竹溪演义</h4>
+                <p>2.5d游戏</p>
+                <a href="mod/mod/cmake-build-debug.zip" class="project-link">下载zip</a>
             </div>
-            <div class="project-desc">
-                <span class="tag">#Minecraft_neoforge</span>
-                <span class="tag">#Mod_1.21.4</span>
-                <span style="display:block; margin-top:6px;">JAVA_MCreator</span>
-                <span style="display:block; color:#7d8590; font-size:0.8rem; margin-top:4px;">(;</span>
+            <div class="project-card">
+                <div class="project-icon">□</div>
+                <h4>决明的生物群系</h4>
+                <p>我的世界neoforge模组</p>
+                <a href="mod/mod/决明的生物群系-1.0.0-neoforge-1.21.4.jar" class="project-link">了解详情 →</a>
             </div>
-            <div class="download-section">
-                <a href="mod/mod_ks.html" class="download-btn primary"><span class="icon">⬇</span> 下载 .zip</a>
-                <a href="#" class="download-btn outline"><span class="icon">⬇</span> clone</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-name">
-                <span>竹溪演义</span>
-                <span class="hash">cassia_seedling</span>
-            </div>
-            <div class="project-desc">
-                <span class="tag">#tool</span>
-                <span class="tag">#render</span>
-                <span style="display:block; margin-top:6px;">古风 · 开放 · 休闲</span>
-                <span style="display:block; color:#7d8590; font-size:0.8rem; margin-top:4px;">C-raylib</span>
-            </div>
-            <div class="download-section">
-                <a href="mod/mod/cmake-build-debug.zip" class="download-btn primary"><span class="icon">⬇</span> 下载 .zip</a>
-                <a href="#" class="download-btn outline"><span class="icon">⬇</span> clone</a>
+            <div class="project-card">
+                <div class="project-icon">□</div>
+                <h4>矿石复兴</h4>
+                <p>我的世界neoforge模组</p>
+                <a href="mod/mod/矿石复兴-1.0.0-neoforge-1.21.4.jar" class="project-link">了解详情 →</a>
             </div>
         </div>
-    </div>
+    </section>
+</main>
 
-    <footer class="studio-footer">
-        <div class="footer-commit">
-            <span>管理员</span>
-            <span class="commit-hash">Cassia_seedling_</span>
-            <span style="color:#7d8590;">—</span>
-            <span style="color:#b1bac4;"></span>
-            <span style="color:#7d8590; font-size:0.75rem;">(main)</span>
-        </div>
-        <div class="footer-links">
-            <a href="mod/notice.html">公告</a>
-            <a href="mod/password.html">登录</a>
-            <a href="#">CE神龙工作室_</a>
-        </div>
-    </footer>
-</div>
+<footer class="footer">
+    <p>© 2025 cassia_seedling</p>
+</footer>
 
-<!-- 打字机效果 + 头像管理（使用 sessionStorage） -->
-<script>
-    // ---- 打字机效果 ----
-    function generateRandomString(length = 20) {
-        const chars = 'abcdefghijklmnopqrstuvwxyz0123456789-_.!@#$%^&*()_+={}[]><~';
-        let result = '';
-        for (let i = 0; i < length; i++) {
-            result += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return result;
-    }
-
-    function generateRandomCommand() {
-        const prefixes = ['+_@', 'ceds', '{}@W', '"@', '{#', '|{', '+!', '?>', '<?>', '{?}'];
-        const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-        const randomSuffix = generateRandomString(Math.floor(Math.random() * 20) + 10);
-        return `${randomPrefix} ${randomSuffix}`;
-    }
-
-    const element = document.getElementById('typing-command');
-    let currentText = '';
-    let isTyping = false;
-
-    function typeWriter(text, callback) {
-        if (isTyping) return;
-        isTyping = true;
-        element.textContent = '';
-        currentText = text;
-        let index = 0;
-
-        function type() {
-            if (index < text.length) {
-                element.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, 60 + Math.random() * 40);
-            } else {
-                isTyping = false;
-                if (callback) callback();
-            }
-        }
-        type();
-    }
-
-    function startLoop() {
-        const newCommand = generateRandomCommand();
-        typeWriter(newCommand, () => {
-            const delay = 2000 + Math.random() * 2000;
-            setTimeout(startLoop, delay);
-        });
-    }
-
-    startLoop();
-
-    // ---- 头像管理：使用 sessionStorage（关闭浏览器/标签页后自动清除） ----
-    (function updateUserProfile() {
-        // 从 sessionStorage 读取登录状态
-        const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-        const username = sessionStorage.getItem('username') || '访客';
-
-        const avatarImg = document.getElementById('avatarImg');
-        const userName = document.getElementById('userName');
-        const userStatus = document.getElementById('userStatus');
-
-        // 您的SVG文件路径
-        const avatarSrc = 'svg/seedling.svg';
-
-        if (isLoggedIn) {
-            avatarImg.src = avatarSrc;
-            userName.textContent = username;
-            userStatus.textContent = '已登录';
-            userStatus.className = 'user-status logged-in';
-        } else {
-            avatarImg.src = avatarSrc;
-            userName.textContent = '访客';
-            userStatus.textContent = '未登录';
-            userStatus.className = 'user-status logged-out';
-        }
-    })();
-
-    // 监听页面可见性变化，重新检查登录状态
-    document.addEventListener('visibilitychange', function() {
-        if (document.visibilityState === 'visible') {
-            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-            const username = sessionStorage.getItem('username') || '访客';
-            const avatarImg = document.getElementById('avatarImg');
-            const userName = document.getElementById('userName');
-            const userStatus = document.getElementById('userStatus');
-            const avatarSrc = 'svg/favicon.svg';
-
-            if (isLoggedIn) {
-                avatarImg.src = avatarSrc;
-                userName.textContent = username;
-                userStatus.textContent = '已登录';
-                userStatus.className = 'user-status logged-in';
-            } else {
-                avatarImg.src = avatarSrc;
-                userName.textContent = '访客';
-                userStatus.textContent = '未登录';
-                userStatus.className = 'user-status logged-out';
-            }
-        }
-    });
-
-    // 当从登录页返回时更新（通过 storage 事件监听 sessionStorage 变化）
-    window.addEventListener('storage', function(e) {
-        if (e.key === 'isLoggedIn' || e.key === 'username') {
-            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-            const username = sessionStorage.getItem('username') || '访客';
-            const avatarImg = document.getElementById('avatarImg');
-            const userName = document.getElementById('userName');
-            const userStatus = document.getElementById('userStatus');
-            const avatarSrc = 'svg/favicon.svg';
-
-            if (isLoggedIn) {
-                avatarImg.src = avatarSrc;
-                userName.textContent = username;
-                userStatus.textContent = '已登录';
-                userStatus.className = 'user-status logged-in';
-            } else {
-                avatarImg.src = avatarSrc;
-                userName.textContent = '访客';
-                userStatus.textContent = '未登录';
-                userStatus.className = 'user-status logged-out';
-            }
-        }
-    });
-
-    // 页面卸载时自动清除 sessionStorage（浏览器自动处理，不需要额外代码）
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>

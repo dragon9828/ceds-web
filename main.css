@@ -1,0 +1,540 @@
+/* ============================================================
+   main.css — ce神龙工作室
+   天蓝色 + 白色 · 方角设计 · 轮播图片支持
+   ============================================================ */
+
+/* ========== 全局重置 & 方角基础 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 0 !important;   /* 全局禁止圆角，强制方角 */
+}
+
+body {
+    font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+/* ========== 顶部导航（独立颜色 + 下滑带动） ========== */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #0a6eb4;              /* 独立深天蓝 */
+    z-index: 1000;
+    transition: transform 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 下滑时导航上移隐藏，由 JS 切换 .nav-hidden */
+.top-nav.nav-hidden {
+    transform: translateY(-100%);
+}
+
+/* 下滑时导航“带动”的另一种表现：滚动后加深颜色 + 阴影 */
+.top-nav.nav-scrolled {
+    background-color: #085a94;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.nav-container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    width: 22px;
+    height: 22px;
+    color: #6cb4ee;
+    font-size: 18px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 6px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px 16px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: #1e90ff;
+    color: #ffffff;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-login,
+.btn-register {
+    font-size: 14px;
+    padding: 8px 20px;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-login {
+    background-color: #ffffff;
+    color: #0a6eb4;
+    font-weight: 600;
+}
+
+.btn-login:hover {
+    background-color: #e6f2ff;
+}
+
+.btn-register {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-register:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ========== 主内容区（为固定导航留出空间） ========== */
+.main-content {
+    padding-top: 70px;
+}
+
+/* ========== 轮播图 ========== */
+.carousel-section {
+    padding: 24px 24px 0;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    height: 380px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #e6f2ff;
+}
+
+.carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 背景图铺满（当使用 data-bg 图片时生效） */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 若轮播项使用图片，叠加一层深色遮罩让白色文字更清晰（JS 自动加 .has-image） */
+.carousel-slide.has-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(20, 50, 80, 0.35), rgba(20, 50, 80, 0.6));
+    z-index: 0;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.slide-content {
+    position: relative;
+    z-index: 1;               /* 保证文字在遮罩之上 */
+    text-align: center;
+    color: #ffffff;
+    padding: 0 40px;
+    transform: translateY(12px);
+    opacity: 0;
+    transition: transform 0.6s ease 0.15s, opacity 0.6s ease 0.15s;
+}
+
+.carousel-slide.active .slide-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-content h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.slide-content p {
+    font-size: 18px;
+    margin-bottom: 24px;
+    opacity: 0.95;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.slide-btn {
+    background-color: #ffffff;
+    color: #0a6eb4;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 32px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.slide-btn:hover {
+    background-color: #e6f2ff;
+    transform: translateY(-2px);
+}
+
+/* 指示器 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.indicator {
+    width: 34px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s, width 0.3s;
+}
+
+.indicator.active {
+    background-color: #ffffff;
+    width: 44px;
+}
+
+/* 左右箭头 */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border: none;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 5;
+    transition: background-color 0.2s;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+}
+
+.carousel-arrow.prev {
+    left: 0;
+}
+
+.carousel-arrow.next {
+    right: 0;
+}
+
+/* ========== 公告栏 ========== */
+.announcement-section {
+    padding: 24px 24px 0;
+}
+
+.announcement-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #1e90ff;         /* 天蓝色 */
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    overflow: hidden;
+}
+
+.announcement-badge {
+    background-color: #ffffff;
+    color: #0a6eb4;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
+    margin-right: 16px;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+}
+
+.announcement-text {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: announcementSlide 18s linear infinite;
+}
+
+@keyframes announcementSlide {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ========== 项目展示 ========== */
+.projects-section {
+    padding: 40px 24px 60px;
+}
+
+.section-title {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    font-size: 24px;
+    color: #0a6eb4;
+    border-left: 5px solid #1e90ff;
+    padding-left: 14px;
+}
+
+.projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.project-card {
+    background-color: #ffffff;
+    border: 2px solid #e6f2ff;
+    padding: 32px 24px;
+    text-align: center;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.project-card:hover {
+    border-color: #1e90ff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.15);
+}
+
+.project-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.project-card h4 {
+    font-size: 18px;
+    color: #0a6eb4;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.project-link {
+    color: #1e90ff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.project-link:hover {
+    color: #0a6eb4;
+}
+
+/* ========== 页脚 ========== */
+.footer {
+    background-color: #0a6eb4;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+}
+
+/* ========== 登录模态框（可选，若未使用不影响） ========== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(6, 63, 104, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    width: 380px;
+    max-width: 90%;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background-color: #0a6eb4;
+    color: #ffffff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header h3 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.modal-body {
+    padding: 24px 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    color: #0a6eb4;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #c9e1f5;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #1e90ff;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #0a6eb4;
+}
+
+.form-hint {
+    text-align: center;
+    font-size: 12px;
+    color: #999999;
+    margin-top: 12px;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .carousel-container {
+        height: 320px;
+    }
+    .slide-content h2 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav-links {
+        display: none;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .carousel-container {
+        height: 260px;
+    }
+    .slide-content h2 {
+        font-size: 26px;
+    }
+    .slide-content p {
+        font-size: 15px;
+    }
+    .carousel-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 24px;
+    }
+    .indicator {
+        width: 26px;
+    }
+    .indicator.active {
+        width: 36px;
+    }
+}
