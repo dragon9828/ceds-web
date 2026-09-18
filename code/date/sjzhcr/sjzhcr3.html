@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../../../svg/favicon.svg" type="image/svg+xml">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>更多作品</title>
+    <title>{站长：暂时未知，额}：目录</title>
     <style>
         /* ========== 全局重置 & 方角 ========== */
         * {
@@ -35,7 +35,7 @@
             line-height: 1.6;
         }
 
-        /* ========== 顶部导航（与主页一致，下滑带动） ========== */
+        /* ========== 顶部导航 ========== */
         .top-nav {
             position: fixed;
             top: 0;
@@ -47,7 +47,6 @@
             transition: transform 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
         }
-
 
         .nav-container {
             max-width: 1280px;
@@ -84,14 +83,8 @@
             color: #ffffff;
         }
 
-
-
-
-
         /* ========== 主内容区 ========== */
         .main-content { padding-top: 64px; }
-
-
 
         /* ========== 通用容器 ========== */
         .container {
@@ -100,65 +93,37 @@
             padding: 0 24px;
         }
 
-
         /* ========== 分类卡片 ========== */
         .categories {
             padding: 60px 0 20px;
         }
-        .section-title {
-            font-size: 24px;
-            color: var(--primary-deep);
-            border-left: 5px solid var(--primary);
-            padding-left: 14px;
-            margin-bottom: 28px;
-        }
+
+        /* 竖向排列的容器 */
         .category-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .category-card {
-            background-color: var(--bg-soft);
-            border: 2px solid transparent;
-            padding: 30px 22px;
-            text-align: center;
-            cursor: pointer;
-            transition: border-color 0.25s, transform 0.25s, background-color 0.25s;
-        }
-        .category-card:hover {
-            border-color: var(--primary);
-            background-color: #ffffff;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 24px rgba(30, 144, 255, 0.12);
-        }
-        .category-icon {
-            font-size: 36px;
-            margin-bottom: 14px;
-        }
-        .category-card h4 {
-            font-size: 17px;
-            color: var(--primary-deep);
-            margin-bottom: 8px;
-        }
-        .category-card p {
-            font-size: 13px;
-            color: var(--text-mid);
+            display: flex;
+            flex-direction: column;  /* 竖向排列 */
+            align-items: center;     /* 居中 */
+            gap: 20px;               /* 图片间距 */
         }
 
-
+        /* 统一控制图片尺寸，不裁剪 */
+        .category-grid img {
+            max-width: 100%;         /* 绝不超过容器宽度 */
+            max-height: 800px;       /* 限制最大高度，按需调整 */
+            width: auto;             /* 宽度自动，保持比例 */
+            height: auto;            /* 高度自动，保持比例 */
+            object-fit: contain;     /* 完整显示，不裁剪 */
+            display: block;          /* 消除底部空隙 */
+        }
 
         /* ========== 响应式 ========== */
-        @media (max-width: 1024px) {
-            .category-grid { grid-template-columns: repeat(2, 1fr); }
-        }
         @media (max-width: 860px) {
-
             .support-hero h1 { font-size: 34px; }
         }
+
         @media (max-width: 640px) {
             .nav-links { display: none; }
             .category-grid { grid-template-columns: 1fr; }
-
             .support-hero h1 { font-size: 28px; letter-spacing: 2px; }
             .hero-search button { padding: 12px; }
         }
@@ -170,35 +135,30 @@
 <header class="top-nav" id="topNav">
     <div class="nav-container">
         <div class="logo">
-            <img src="../svg/favicon.svg" alt="">支持库
+            <img src="../../../svg/favicon.svg" alt="">目录
         </div>
         <nav class="nav-links">
-            <a href="../index.html" class="nav-link">首页</a>
-            <a href="#" class="nav-link active">更多作品</a>
-            <a href="tool.html" class="nav-link">工具</a>
-            <a href="lib.html" class="nav-link">支持</a>
+            <a href="../../../index.html" class="nav-link">首页</a>
+            <a href="#" class="nav-link">更多作品</a>
+            <a href="../../tool.html" class="nav-link">工具</a>
+            <a href="../../lib.html" class="nav-link active">支持</a>
         </nav>
     </div>
 </header>
 
 <main class="main-content">
 
-
-
     <!-- ===== 帮助分类 ===== -->
     <section class="categories">
         <div class="container">
-            <h2 class="section-title">分类</h2>
+            <h2>新的目标|</h2>
             <div class="category-grid">
-                <a class="category-card" data-category="account" href="date/hcr/T.html">
-                    <div class="category-icon">📃</div>
-                    <h4>火柴人钓鱼记</h4>
-                    <p>无</p>
-                </a>
+                <img src="images/3.jpg" alt="1">
+                <a href="#">下一章</a>
+                <a href="sjzhcr2.html">上一章</a>
             </div>
         </div>
     </section>
-
 
 </main>
 
